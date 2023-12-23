@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <div style="text-align: center; font-family: sans-serif; color: black;">
+            <h2>{{ object.Title }}</h2>
+            {% if object.Photo %}
+                <img src="{{ object.Photo.url }}" width="500px" height="400px" style="border-radius: 10px;" alt="{{ object.Title }}">
+            {% endif %}
+            <p style="color: grey;">{{ object.Date }}</p>
+            <h4>{{ object.Summary }}</h4>
+            <h4>{{ object.Body }}</h4>
+            from
+            <p>{{ object.Author }}</p>
+
+            <div style="color: cornflowerblue;">
+                <h2><a href="http://127.0.0.1:8000/article/new/">Post</a></h2>
+                <h3><a href="http://127.0.0.1:8000/article/">See posts</a></h3>
+            </div>
+    </div>
+
+    <div style="text-align: center; font-family: sans-serif; text-decoration: none; color: black;">
+        <a href="{% url 'edit' article.pk %}">Edit</a>
+        <a href="{% url 'delete' article.pk %}">Delete</a>
+        <a href="{% url 'article' %}">All posts</a>
+    </div>
+
+{% endblock content %}

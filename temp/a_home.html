@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <div style="text-align: center; font-family: sans-serif; color: black;">
+        {% for article in object_list %}
+            <h2><a href="{% url 'detail' article.pk %}">{{ article.Title }}</a></h2>
+            {% if article.Photo %}
+                <img src="{{ article.Photo.url }}" width="350px" height="500px" style="border-radius: 10px;">
+            {% endif %}
+            <p style="color: grey;">{{ article.Date }}</p>
+            <p>{{ article.Author }}</p>
+        {% endfor %}
+
+        <div style="color: cornflowerblue;">
+            <h2><a href="http://127.0.0.1:8000/article/new/">Post</a></h2>
+        </div>
+    </div>
+
+{% endblock content %}
